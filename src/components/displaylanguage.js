@@ -9,12 +9,16 @@ const LanguageSelectionComponent = (props) => {
   function handleSelectChange(event) {
 
     var offset, text
+    
+     // event to send timezone in UTC
 
     if(event.target.value === 'en-US') { offset = -5 ; text = "Central America" ;}
     if(event.target.value === 'pt-BR') { offset = -3 ; text = "Brazil" ; }
     if(event.target.value === 'en-GB') { offset = 1 ; text = "London"; }
 
  
+    // event to convert time
+    
     var d = new Date();
     var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
     var nd = new Date(utc + (3600000*offset));
